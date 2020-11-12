@@ -19,7 +19,6 @@ class PropertyController extends Controller
     public function index()
     {
         $properties = Property::latest()
-            ->withCount('comments')
             ->where('agent_id', Auth::id())
             ->paginate(10);
 
@@ -28,9 +27,7 @@ class PropertyController extends Controller
 
     public function create()
     {
-        $features = Feature::all();
-
-        return view('agent.properties.create', compact('features'));
+        return view('agent.properties.create');
     }
 
     public function store(Request $request)
@@ -149,10 +146,9 @@ class PropertyController extends Controller
 
     public function edit(Property $property)
     {
-        $features = Feature::all();
         $property = Property::where('slug', $property->slug)->first();
 
-        return view('agent.properties.edit', compact('property', 'features'));
+        return view('agent.properties.edit', compact('property'));
     }
 
     public function update(Request $request, $property)

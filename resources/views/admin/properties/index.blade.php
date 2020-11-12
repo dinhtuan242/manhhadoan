@@ -12,17 +12,17 @@
 @section('content')
 
     <div class="block-header">
-        <a href="{{route('admin.properties.create')}}" class="waves-effect waves-light btn right m-b-15 addbtn">
-            <i class="material-icons left">add</i>
-            <span>Th�m moi </span>
-        </a>
+{{--        <a href="{{route('admin.properties.create')}}" class="waves-effect waves-light btn right m-b-15 addbtn">--}}
+{{--            <i class="material-icons left">add</i>--}}
+{{--            <span>Thêm mới </span>--}}
+{{--        </a>--}}
     </div>
 
     <div class="row clearfix">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="card">
                 <div class="header bg-teal">
-                    <h2>Danh sach tai san</h2>
+                    <h2>Danh sách tài sản</h2>
                 </div>
                 <div class="body">
                     <div class="table-responsive">
@@ -30,12 +30,12 @@
                             <thead>
                                 <tr>
                                     <th>STT</th>
-                                    <th>Hinh anh</th>
-                                    <th>Ten tai san</th>
-                                    <th>Tac gia</th>
-                                    <th>Loai tai san</th>
-                                    <th>Kieu tai san</th>
-                                    <th width="150">Hanh dong</th>
+                                    <th>Hình ảnh</th>
+                                    <th>Tên tài sản</th>
+                                    <th>Người đăng</th>
+                                    <th>Loại tài sản</th>
+                                    <th>Kiểu tài sản</th>
+                                    <th width="150">Hành động</th>
                                 </tr>
                             </thead>
 

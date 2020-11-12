@@ -22,15 +22,13 @@ class UserManagerController extends Controller
      */
     public function index()
     {
-        $users = User::where('isReport', 0)
-                        ->get();
+        $users = User::get();
 
         return view('admin.user.index', compact('users'));
     }
     public function block()
     {
-        $users = User::where('isReport', 1)
-                        ->orderBy('updated_at', 'DESC')
+        $users = User::orderBy('updated_at', 'DESC')
                         ->orderBy('status', 'ASC')
                         ->get();
         return view('admin.user.block', compact('users'));
@@ -69,7 +67,7 @@ class UserManagerController extends Controller
             'username'  => $username,
             'role_id'   => $request['role_id'],
         ]);
-        Toastr::success('Thong bao', 'Them moi nguoi dung thanh cong');
+        Toastr::success('Thông báo', 'Thêm mới người dùng thành công');
         return redirect()->route('admin.user-manager.index');
     }
 
@@ -136,7 +134,7 @@ class UserManagerController extends Controller
                 'role_id'   => $request['role_id'],
             ]);
         }
-        Toastr::success('Thong bao', 'Sua nguoi dung thanh cong');
+        Toastr::success('Thông báo', 'Sửa người dùng thành công');
         return redirect()->route('admin.user-manager.index');
     }
 
@@ -173,7 +171,6 @@ class UserManagerController extends Controller
     public function report($id, Request $request)
     {
         $agent = User::findOrFail($id);
-        $agent->isReport = 1;
         $agent->reason = $request['reason'];
         $agent->save();
         if ($request->ajax()) {

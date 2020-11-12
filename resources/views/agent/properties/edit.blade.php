@@ -129,21 +129,21 @@
                                     </p>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="input-field col s6">
-                                    <select multiple name="features[]">
-                                        <option value="" disabled>Chọn tính năng</option>
-                                        @foreach($features as $feature)
-                                            <option value="{{ $feature->id }}" 
-                                                    @foreach($property->features as $checked)
-                                                        {{ ($checked->id == $feature->id) ? 'selected' : '' }}
-                                                    @endforeach
-                                            >{{ $feature->name }}</option>
-                                        @endforeach
-                                    </select>
-                                    <label class="label-custom">Tính năng</label>
-                                </div>
-                            </div>
+{{--                            <div class="row">--}}
+{{--                                <div class="input-field col s6">--}}
+{{--                                    <select multiple name="features[]">--}}
+{{--                                        <option value="" disabled>Chọn tính năng</option>--}}
+{{--                                        @foreach($features as $feature)--}}
+{{--                                            <option value="{{ $feature->id }}" --}}
+{{--                                                    @foreach($property->features as $checked)--}}
+{{--                                                        {{ ($checked->id == $feature->id) ? 'selected' : '' }}--}}
+{{--                                                    @endforeach--}}
+{{--                                            >{{ $feature->name }}</option>--}}
+{{--                                        @endforeach--}}
+{{--                                    </select>--}}
+{{--                                    <label class="label-custom">Tính năng</label>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
                             <div class="row">
                                 <div class="file-field input-field col s10">
                                     <div class="btn teal">

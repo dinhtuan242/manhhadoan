@@ -3,10 +3,10 @@
 namespace App\Providers;
 
 use App\Category;
-use App\Message;
+//use App\Message;
 use App\Post;
 use App\Property;
-use App\Setting;
+//use App\Setting;
 use App\Tag;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Schema;
@@ -42,16 +42,16 @@ class AppServiceProvider extends ServiceProvider
 
             view()->composer('frontend.partials.footer', function ($view) {
                 $view->with('footerproperties', Property::latest()->take(3)->get());
-                $view->with('footersettings', Setting::select('aboutus', 'facebook', 'twitter', 'linkedin')->get());
+//                $view->with('footersettings', Setting::select('aboutus', 'facebook', 'twitter', 'linkedin')->get());
             });
 
             view()->composer('frontend.partials.navbar', function ($view) {
-                $view->with('navbarsettings', Setting::select('name')->get());
+                $view->with('navbarsettings', 'Hoang The Ha');
             });
 
             view()->composer('backend.partials.navbar', function ($view) {
-                $view->with('countmessages', Message::latest()->where('agent_id', Auth::id())->count());
-                $view->with('navbarmessages', Message::latest()->where('agent_id', Auth::id())->take(5)->get());
+//                $view->with('countmessages', Message::latest()->where('agent_id', Auth::id())->count());
+//                $view->with('navbarmessages', Message::latest()->where('agent_id', Auth::id())->take(5)->get());
             });
 
             view()->composer('pages.contact', function ($view) {

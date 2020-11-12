@@ -13,18 +13,18 @@
     <div class="block-header">
         <a href="{{route('admin.user-manager.create')}}" class="waves-effect waves-light btn right m-b-15 addbtn">
             <i class="material-icons left">add</i>
-            <span> Them moi </span>
+            <span> Thêm mới </span>
         </a>&nbsp;
-        <a href="{{route('admin.user-manager.block')}}" class="waves-effect waves-light btn right m-b-15 btn-danger">
-            <i class="material-icons left">block</i>
-            <span>Nguoi dung bi to cao</span>
-        </a>
+{{--        <a href="{{route('admin.user-manager.block')}}" class="waves-effect waves-light btn right m-b-15 btn-danger">--}}
+{{--            <i class="material-icons left">block</i>--}}
+{{--            <span>Nguoi dung bi to cao</span>--}}
+{{--        </a>--}}
     </div>
     <div class="row clearfix">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="card">
                 <div class="header bg-teal">
-                    <h2>Danh sach nguoi dung</h2>
+                    <h2>Danh sách người dùng</h2>
                 </div>
                 <div class="body">
                     <div class="table-responsive">
@@ -32,10 +32,10 @@
                             <thead>
                                 <tr>
                                     <th>STT</th>
-                                    <th>Ten nguoi dung</th>
+                                    <th>Tên người dùng</th>
+                                    <th>Vai trò</th>
                                     <th>Email</th>
-                                    <th>Trang thai</th>
-                                    <th width="150">Hanh dong</th>
+                                    <th width="150">Hành động</th>
                                 </tr>
                             </thead>
 
@@ -44,8 +44,8 @@
                                 <tr>
                                     <td>{{$key+1}}</td>
                                     <td>{{$user->name}}</td>
+                                    <td>{{$user->role->name}}</td>
                                     <td>{{$user->email}}</td>
-                                    <td>{{$user->status == '1' ? 'hoat dong' : 'Bi khoa'}}</td>
                                     <td class="text-center">
                                         <a href="{{route('admin.user-manager.edit',$user->id)}}" class="btn btn-info btn-sm waves-effect">
                                             <i class="material-icons">edit</i>

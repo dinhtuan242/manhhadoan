@@ -112,15 +112,15 @@
                                         </label>
                                     </p>
                                 </div>
-                                <div class="input-field col s6">
-                                    <select multiple name="features[]">
-                                        <option value="" disabled selected>Tính năng</option>
-                                        @foreach($features as $feature)
-                                            <option value="{{ $feature->id }}">{{ $feature->name }}</option>
-                                        @endforeach
-                                    </select>
-                                    <label class="label-custom">Chọn tính năng</label>
-                                </div>
+{{--                                <div class="input-field col s6">--}}
+{{--                                    <select multiple name="features[]">--}}
+{{--                                        <option value="" disabled selected>Tính năng</option>--}}
+{{--                                        @foreach($features as $feature)--}}
+{{--                                            <option value="{{ $feature->id }}">{{ $feature->name }}</option>--}}
+{{--                                        @endforeach--}}
+{{--                                    </select>--}}
+{{--                                    <label class="label-custom">Chọn tính năng</label>--}}
+{{--                                </div>--}}
                             </div>
 
                             <div class="row">

@@ -19,16 +19,14 @@ class PropertyController extends Controller
 
     public function index()
     {
-        $properties = Property::latest()->withCount('comments')->get();
+        $properties = Property::latest()->get();
 
         return view('admin.properties.index', compact('properties'));
     }
 
     public function create()
     {
-        $features = Feature::all();
-
-        return view('admin.properties.create', compact('features'));
+        return view('admin.properties.create');
     }
 
     public function store(Request $request)
@@ -148,12 +146,11 @@ class PropertyController extends Controller
 
     public function edit(Property $property)
     {
-        $features = Feature::all();
         $property = Property::find($property->id);
 
         $videoembed = $this->convertYoutube($property->video);
 
-        return view('admin.properties.edit', compact('property', 'features', 'videoembed'));
+        return view('admin.properties.edit', compact('property', 'videoembed'));
     }
 
     public function update(Request $request, $property)

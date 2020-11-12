@@ -29,13 +29,13 @@
                                     <h4 class="m-t-10 m-b-0">{{ $propertytotal }}</h4>
                                 </div>
                             </div>
-                            <div class="col s6">
-                                <div class="box teal white-text p-30">
-                                    <i class="material-icons left">mail</i>
-                                    <span class="truncate uppercase bold font-18">Lịch hẹn</span>
-                                    <h4 class="m-t-10 m-b-0">{{ $messagetotal }}</h4>
-                                </div>
-                            </div>
+{{--                            <div class="col s6">--}}
+{{--                                <div class="box teal white-text p-30">--}}
+{{--                                    <i class="material-icons left">mail</i>--}}
+{{--                                    <span class="truncate uppercase bold font-18">Lịch hẹn</span>--}}
+{{--                                    <h4 class="m-t-10 m-b-0">{{ $messagetotal }}</h4>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
                         </div>
 
                         <div class="row">
@@ -57,20 +57,20 @@
                             </div>
                         
                             <div class="col s6">
-                                <div class="box teal white-text p-20">
-                                    <i class="material-icons left font-18">mail</i>
-                                    <span class="truncate uppercase bold">Lịch hẹn gần đây</span>
-                                </div>
-                                <div class="box-content">
-                                    @foreach($messages as $message)
-                                    <div class="grey lighten-4">
-                                        <a href="" class="border-bottom display-block p-15 grey-text-d-2">
-                                            <strong>{{ strtok($message->name, " ") }}:</strong>
-                                            <span class="p-l-5">{{ str_limit($message->message, 25) }} - {{ $message->phone ?? '' }}</span>
-                                        </a>
-                                    </div>
-                                    @endforeach
-                                </div>
+{{--                                <div class="box teal white-text p-20">--}}
+{{--                                    <i class="material-icons left font-18">mail</i>--}}
+{{--                                    <span class="truncate uppercase bold">Lịch hẹn gần đây</span>--}}
+{{--                                </div>--}}
+{{--                                <div class="box-content">--}}
+{{--                                    @foreach($messages as $message)--}}
+{{--                                    <div class="grey lighten-4">--}}
+{{--                                        <a href="" class="border-bottom display-block p-15 grey-text-d-2">--}}
+{{--                                            <strong>{{ strtok($message->name, " ") }}:</strong>--}}
+{{--                                            <span class="p-l-5">{{ str_limit($message->message, 25) }} - {{ $message->phone ?? '' }}</span>--}}
+{{--                                        </a>--}}
+{{--                                    </div>--}}
+{{--                                    @endforeach--}}
+{{--                                </div>--}}
                             </div>
                         </div>
 

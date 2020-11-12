@@ -46,11 +46,11 @@ class TestimonialController extends Controller
             // $testimonial = Image::make($image)->resize(160, 160)->save();
             // Storage::disk('public')->put('testimonial/' . $imagename, $testimonial);
             Storage::disk('public')->put('testimonial/' . $imagename, \File::get($image));
-            if (config('app.env') == 'test') {
-                $full_path_source = $_SERVER['DOCUMENT_ROOT'].'/storage/app/public/testimonial/'. $imagename;
-                $full_path_dest = $_SERVER['DOCUMENT_ROOT'].'/public/storage/testimonial/' . $imagename;
-                File::copy($full_path_source, $full_path_dest);
-            }
+//            if (config('app.env') == 'test') {
+//                $full_path_source = $_SERVER['DOCUMENT_ROOT'].'/storage/app/public/testimonial/'. $imagename;
+//                $full_path_dest = $_SERVER['DOCUMENT_ROOT'].'/public/storage/testimonial/' . $imagename;
+//                File::copy($full_path_source, $full_path_dest);
+//            }
         } else {
             $imagename = 'default.png';
         }
@@ -96,11 +96,11 @@ class TestimonialController extends Controller
             // $testimonialimg = Image::make($image)->resize(160, 160)->save();
             // Storage::disk('public')->put('testimonial/' . $imagename, $testimonialimg);
             Storage::disk('public')->put('testimonial/' . $imagename, \File::get($image));
-            if (config('app.env') == 'test') {
-                $full_path_source = $_SERVER['DOCUMENT_ROOT'].'/storage/app/public/testimonial/'. $imagename;
-                $full_path_dest = $_SERVER['DOCUMENT_ROOT'].'/public/storage/testimonial/' . $imagename;
-                File::copy($full_path_source, $full_path_dest);
-            }
+//            if (config('app.env') == 'test') {
+//                $full_path_source = $_SERVER['DOCUMENT_ROOT'].'/storage/app/public/testimonial/'. $imagename;
+//                $full_path_dest = $_SERVER['DOCUMENT_ROOT'].'/public/storage/testimonial/' . $imagename;
+//                File::copy($full_path_source, $full_path_dest);
+//            }
         } else {
             $imagename = $testimonial->image;
         }

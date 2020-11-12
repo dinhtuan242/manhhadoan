@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Post;
 use App\Property;
-use App\Slider;
+use App\Banner;
 use App\Testimonial;
 use Illuminate\Http\Request;
 
@@ -13,8 +13,8 @@ class FrontpageController extends Controller
 
     public function index()
     {
-        $sliders = Slider::latest()->get();
-        $properties = Property::latest()->where('active', 1)->with('rating')->withCount('comments')->take(6)->get();
+        $sliders = Banner::latest()->get();
+        $properties = Property::latest()->where('active', 1)->take(6)->get();
         $testimonials = Testimonial::latest()->get();
         $posts = Post::latest()->where('status', 1)->take(6)->get();
 
@@ -39,7 +39,7 @@ class FrontpageController extends Controller
         $maxarea = $request->maxarea;
         $featured = $request->featured;
 
-        $properties = Property::latest()->withCount('comments')
+        $properties = Property::latest()
             ->when($city, function ($query, $city) {
                 return $query->where('city', '=', $city);
             })

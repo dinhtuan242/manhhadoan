@@ -14,7 +14,7 @@
     <div class="block-header">
         <a href="{{route('admin.user-manager.index')}}" class="waves-effect waves-light btn btn-danger right m-b-15">
             <i class="material-icons left">arrow_back</i>
-            <span>Quay lai</span>
+            <span>Quay lại</span>
         </a>
     </div>
 
@@ -22,7 +22,7 @@
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="card">
                 <div class="header bg-teal">
-                    <h2>Ten nguoi dung</h2>
+                    <h2>Tên người dùng</h2>
                 </div>
                 <div class="body">
                     <form action="{{route('admin.user-manager.store')}}" method="POST" enctype="multipart/form-data">
@@ -31,7 +31,7 @@
                         <div class="form-group form-float">
                             <div class="form-line">
                                 <input type="text" name="name" class="form-control">
-                                <label class="form-label">Ho va ten</label>
+                                <label class="form-label">Họ và tên</label>
                             </div>
                         </div>
                         <div class="form-group form-float">
@@ -43,19 +43,19 @@
                         <div class="form-group form-float">
                             <div class="form-line">
                                 <input type="password" name="password" class="form-control">
-                                <label class="form-label">Mat khau</label>
+                                <label class="form-label">Mật khẩu</label>
                             </div>
                         </div>
                         <div class="form-group form-float">
                             <div class="form-line">
                                 <input type="password" name="password_confirmation" class="form-control">
-                                <label class="form-label">Nhap lai mat khau</label>
+                                <label class="form-label">Nhập lại mật khẩu</label>
                             </div>
                         </div>
                         <div class="form-group form-float">
                             <div class="form-line">
-                                <label>Chon quyen</label>
-                                <select name="role_id"" class="form-control show-tick">
+                                <label>Chọn quyền</label>
+                                <select name="role_id" class="form-control show-tick">
                                     @foreach($roles as $role)
                                         <option value="{{$role->id}}">{{$role->name}}</option>
                                     @endforeach
@@ -65,7 +65,7 @@
 
                         <button type="submit" class="btn btn-teal btn-lg m-t-15 waves-effect">
                             <i class="material-icons">save</i>
-                            <span>Luu</span>
+                            <span>Lưu</span>
                         </button>
 
                     </form>

@@ -20,21 +20,21 @@
         <div class="col-lg-8 col-md-4 col-sm-12 col-xs-12">
             <div class="card">
                 <div class="header bg-teal">
-                    <h2>T&#7841;o tài s&#7843;n</h2>
+                    <h2>T&#7841;o tï¿½i s&#7843;n</h2>
                 </div>
                 <div class="body">
 
                     <div class="form-group form-float">
                         <div class="form-line">
                             <input type="text" name="title" class="form-control" value="{{old('title')}}">
-                            <label class="form-label">Tên tài s&#7843;n</label>
+                            <label class="form-label">Tï¿½n tï¿½i s&#7843;n</label>
                         </div>
                     </div>
 
                     <div class="form-group form-float">
                         <div class="form-line">
                             <input type="number" class="form-control" name="price" required>
-                            <label class="form-label">Giá</label>
+                            <label class="form-label">Giï¿½</label>
                         </div>
                         <div class="help-info">Tri&#7879;u &#273;&#7891;ng</div>
                     </div>
@@ -42,14 +42,14 @@
                     <div class="form-group form-float">
                         <div class="form-line">
                             <input type="number" class="form-control" name="bedroom" required>
-                            <label class="form-label">S&#7889; phòng ng&#7911;</label>
+                            <label class="form-label">S&#7889; phï¿½ng ng&#7911;</label>
                         </div>
                     </div>
 
                     <div class="form-group form-float">
                         <div class="form-line">
                             <input type="number" class="form-control" name="bathroom" required>
-                            <label class="form-label">S&#7889; phòng t&#7855;m</label>
+                            <label class="form-label">S&#7889; phï¿½ng t&#7855;m</label>
                         </div>
                     </div>
 
@@ -70,19 +70,19 @@
                     <div class="form-group form-float">
                         <div class="form-line">
                             <input type="number" class="form-control" name="area" required>
-                            <label class="form-label">Di&#7879;n tích</label>
+                            <label class="form-label">Di&#7879;n tï¿½ch</label>
                         </div>
-                        <div class="help-info">mét vuông</div>
+                        <div class="help-info">mï¿½t vuï¿½ng</div>
                     </div>
 
                     <div class="form-group">
                         <input type="checkbox" id="featured" name="featured" class="filled-in" value="1" />
-                        <label for="featured">Tính n&#259;ng &#273;&#7863;c bi&#7879;t</label>
+                        <label for="featured">Tï¿½nh n&#259;ng &#273;&#7863;c bi&#7879;t</label>
                     </div>
 
                     <hr>
                     <div class="form-group">
-                        <label for="tinymce">Mô t&#7843;</label>
+                        <label for="tinymce">Mï¿½ t&#7843;</label>
                         <textarea name="description" id="tinymce">{{old('description')}}</textarea>
                     </div>
 
@@ -112,33 +112,33 @@
 
                     <div class="form-group form-float">
                         <div class="form-line {{$errors->has('purpose') ? 'focused error' : ''}}">
-                            <label>Ki&#7875;u tài s&#7843;n</label>
+                            <label>Ki&#7875;u tï¿½i s&#7843;n</label>
                             <select name="purpose" class="form-control show-tick">
                                 <option value="">-- Ch&#7885;n m&#7897;t --</option>
-                                <option value="sale">Bán</option>
-                                <option value="rent">Cho thuê</option>
+                                <option value="sale">Bï¿½n</option>
+                                <option value="rent">Cho thuï¿½</option>
                             </select>
                         </div>
                     </div>
 
                     <div class="form-group form-float">
                         <div class="form-line {{$errors->has('type') ? 'focused error' : ''}}">
-                            <label>Lo&#7841;i tài s&#7843;n</label>
+                            <label>Lo&#7841;i tï¿½i s&#7843;n</label>
                             <select name="type" class="form-control show-tick">
                                 <option value="">-- Ch&#7885;n m&#7897;t --</option>
-                                <option value="house">Nhà</option>
+                                <option value="house">Nhï¿½</option>
                                 <option value="apartment">C&#259;n h&#7897;</option>
                             </select>
                         </div>
                     </div>
 
-                    <h5>Tính n&#259;ng khác</h5>
-                    <div class="form-group demo-checkbox">
-                        @foreach($features as $feature)
-                            <input type="checkbox" id="features-{{$feature->id}}" name="features[]" class="filled-in chk-col-teal" value="{{$feature->id}}" />
-                            <label for="features-{{$feature->id}}">{{$feature->name}}</label>
-                        @endforeach
-                    </div>
+{{--                    <h5>TÃ­nh nÄƒng khÃ¡c</h5>--}}
+{{--                    <div class="form-group demo-checkbox">--}}
+{{--                        @foreach($features as $feature)--}}
+{{--                            <input type="checkbox" id="features-{{$feature->id}}" name="features[]" class="filled-in chk-col-teal" value="{{$feature->id}}" />--}}
+{{--                            <label for="features-{{$feature->id}}">{{$feature->name}}</label>--}}
+{{--                        @endforeach--}}
+{{--                    </div>--}}
 
                     <div class="form-group form-float">
                         <div class="form-line">
@@ -178,7 +178,7 @@
             </div>
             <div class="card">
                 <div class="header bg-teal">
-                    <h2>&#7842;nh mô t&#7843;</h2>
+                    <h2>&#7842;nh mï¿½ t&#7843;</h2>
                 </div>
                 <div class="body">
                     <div class="form-group">

@@ -33,7 +33,7 @@ class TagController extends Controller
         $tag->slug = str_slug($request->name);
         $tag->save();
 
-        Toastr::success('message', 'Tag created successfully.');
+        Toastr::success('Thông báo', 'Thêm mới thẻ tag thành công');
         return redirect()->route('admin.tags.index');
     }
 
@@ -60,7 +60,7 @@ class TagController extends Controller
         $tag->slug = str_slug($request->name);
         $tag->save();
 
-        Toastr::success('message', 'Tag updated successfully.');
+        Toastr::success('Thông báo', 'Cập nhật thẻ tag thành công');
         return redirect()->route('admin.tags.index');
     }
 
@@ -70,7 +70,7 @@ class TagController extends Controller
         $tag->delete();
         $tag->posts()->detach();
 
-        Toastr::success('message', 'Tag deleted successfully.');
+        Toastr::success('Thông báo', 'Xoá thẻ tag thành công');
         return back();
     }
 }

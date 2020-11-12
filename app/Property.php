@@ -13,11 +13,6 @@ class Property extends Model
         'location_latitude', 'location_longitude', 'nearby', 'active',
     ];
 
-    public function features()
-    {
-        return $this->belongsToMany(Feature::class)->withTimestamps();
-    }
-
     public function user()
     {
         return $this->belongsTo(User::class, 'agent_id');
@@ -26,16 +21,6 @@ class Property extends Model
     public function gallery()
     {
         return $this->hasMany(PropertyImageGallery::class);
-    }
-
-    public function comments()
-    {
-        return $this->morphMany('App\Comment', 'commentable');
-    }
-
-    public function rating()
-    {
-        return $this->hasMany(Rating::class, 'property_id');
     }
 
 }

@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Comment;
+//use App\Comment;
 use App\Http\Controllers\Controller;
 use App\Mail\Contact;
-use App\Message;
+//use App\Message;
 use App\Post;
 use App\Property;
-use App\Setting;
+//use App\Setting;
 use App\User;
 use Auth;
 use Carbon\Carbon;
@@ -25,16 +25,16 @@ class DashboardController extends Controller
     {
         $propertycount = Property::count();
         $postcount = Post::count();
-        $commentcount = Comment::count();
+//        $commentcount = Comment::count();
         $usercount = User::count();
 
         //lay ban ghi sap xep tu moi nhat den cu nhat, lay ca thong tin user dua vao khoa phu
         //take(5): lay 5 ban ghi
         //goi get de thuc hien cau truy van
         $properties = Property::latest()->with('user')->take(5)->get();
-        $posts = Post::latest()->withCount('comments')->take(5)->get();
+        $posts = Post::latest()->take(5)->get();
         $users = User::with('role')->get();
-        $comments = Comment::with('users')->take(5)->get();
+//        $comments = Comment::with('users')->take(5)->get();
 
         //compact: truyen bien ra ngoai view
         return view('admin.dashboard', compact(

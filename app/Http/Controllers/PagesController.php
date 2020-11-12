@@ -20,7 +20,7 @@ class PagesController extends Controller
     public function properties()
     {
         $cities = Property::select('city', 'city_slug')->distinct('city_slug')->get();
-        $properties = Property::latest()->with('rating')->withCount('comments')->paginate(12);
+        $properties = Property::latest()->paginate(12);
 
         return view('pages.properties.property', compact('properties', 'cities'));
     }
@@ -28,7 +28,6 @@ class PagesController extends Controller
     public function propertieshow($slug)
     {
         $property = Property::with('features', 'gallery', 'user', 'comments')
-            ->withCount('comments')
             ->where('slug', $slug)
             ->first();
 
@@ -71,7 +70,7 @@ class PagesController extends Controller
         $month = request('month');
         $year = request('year');
 
-        $posts = Post::latest()->withCount('comments')
+        $posts = Post::latest()
             ->when($month, function ($query, $month) {
                 return $query->whereMonth('created_at', Carbon::parse($month)->month);
             })
@@ -86,7 +85,7 @@ class PagesController extends Controller
 
     public function blogshow($slug)
     {
-        $post = Post::with('comments')->withCount('comments')->where('slug', $slug)->first();
+        $post = Post::where('slug', $slug)->first();
 
         $blogkey = 'blog-' . $post->id;
         if (!Session::has($blogkey)) {
@@ -134,7 +133,7 @@ class PagesController extends Controller
     // BLOG TAGS
     public function blogTags()
     {
-        $posts = Post::latest()->withCount('comments')
+        $posts = Post::latest()
             ->whereHas('tags', function ($query) {
                 $query->where('tags.slug', '=', request('slug'));
             })
@@ -147,7 +146,7 @@ class PagesController extends Controller
     // BLOG AUTHOR
     public function blogAuthor()
     {
-        $posts = Post::latest()->withCount('comments')
+        $posts = Post::latest()
             ->whereHas('user', function ($query) {
                 $query->where('username', '=', request('username'));
             })
@@ -277,7 +276,7 @@ class PagesController extends Controller
     public function propertyCities()
     {
         $cities = Property::select('city', 'city_slug')->distinct('city_slug')->get();
-        $properties = Property::latest()->with('rating')->withCount('comments')
+        $properties = Property::latest()->with('rating')
             ->where('city_slug', request('cityslug'))
             ->paginate(12);
 

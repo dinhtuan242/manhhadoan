@@ -117,19 +117,19 @@
         function deletePost(id){
             
             swal({
-            title: 'Are you sure?',
-            text: "You won't be able to revert this!",
+            title: 'Bạn có chắc muốn xoá?',
+            text: "Bạn sẽ không thể khôi phục lại bài viết",
             type: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, delete it!'
+            confirmButtonText: 'OK'
             }).then((result) => {
                 if (result.value) {
                     document.getElementById('del-post-'+id).submit();
                     swal(
                     'Deleted!',
-                    'Post has been deleted.',
+                    'Xoá bài viết thành công',
                     'success'
                     )
                 }

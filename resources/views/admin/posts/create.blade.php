@@ -19,24 +19,24 @@
         <div class="col-lg-8 col-md-4 col-sm-12 col-xs-12">
             <div class="card">
                 <div class="header bg-teal">
-                    <h2>Th�m b�i vi&#7871;t</h2>
+                    <h2>Thêm bài viết</h2>
                 </div>
                 <div class="body">
 
                     <div class="form-group form-float">
                         <div class="form-line">
                             <input type="text" name="title" class="form-control" value="{{old('title')}}">
-                            <label class="form-label">T�n b�i vi&#7871;t</label>
+                            <label class="form-label">Tên bài viết</label>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <input type="checkbox" id="published" name="status" class="filled-in" value="1" />
-                        <label for="published">C�ng khai b�i vi&#7871;t</label>
+                        <label for="published">Công khai bài viết</label>
                     </div>
                     <hr>
                     <div class="form-group">
-                        <label for="">N&#7897;i dung b�i vi&#7871;t</label>
+                        <label for="">Nội dung bài viết</label>
                         <textarea name="body" id="tinymce">{{old('body')}}</textarea>
                     </div>
 
@@ -46,13 +46,13 @@
         <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
             <div class="card">
                 <div class="header bg-teal">
-                    <h2>Ch&#7885;n th&#7875; lo&#7841;i</h2>
+                    <h2>Chọn thể loại</h2>
                 </div>
                 <div class="body">
 
                     <div class="form-group form-float">
                         <div class="form-line {{$errors->has('categories') ? 'focused error' : ''}}">
-                            <label>Ch&#7885;n th&#7875; lo&#7841;i</label>
+                            <label>Chọn thể loại</label>
                             <select name="categories[]" class="form-control show-tick" multiple>
                                 @foreach($categories as $category)
                                     <option value="{{$category->id}}">{{$category->name}}</option>
@@ -63,7 +63,7 @@
 
                     <div class="form-group form-float">
                         <div class="form-line {{$errors->has('tags') ? 'focused error' : ''}}">
-                            <label>Ch&#7885;n Tag</label>
+                            <label>Chọn tag</label>
                             <select name="tags[]" class="form-control show-tick" multiple>
                                 @foreach($tags as $tag)
                                     <option value="{{$tag->id}}">{{$tag->name}}</option>
@@ -73,19 +73,19 @@
                     </div>
                     
                     <div class="form-group">
-                        <label for="form-label">&#7842;nh m� t&#7843;</label>
+                        <label for="form-label">Ảnh mô tả</label>
                         <input type="file" name="image">
                     </div>
 
 
                     <a href="{{route('admin.posts.index')}}" class="btn btn-danger btn-lg m-t-15 waves-effect">
                         <i class="material-icons left">arrow_back</i>
-                        <span>Quay l&#7841;i</span>
+                        <span>Quay lại</span>
                     </a>
 
                     <button type="submit" class="btn btn-teal btn-lg m-t-15 waves-effect">
                         <i class="material-icons">save</i>
-                        <span>L&#432;u</span>
+                        <span>Lưu</span>
                     </button>
 
                 </div>

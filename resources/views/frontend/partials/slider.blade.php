@@ -2,7 +2,7 @@
     @if($sliders)
         @foreach($sliders as $slider)
             <div class="carousel-item" style="background-image: url({{asset(Storage::url('slider/'.$slider->image))}}); background-repeat: round;" href="#{{$slider->id}}!">
-                <div class="slider-content">
+                <div class="slider-content" style="background-color: gray;">
                     <h2 class="white-text">{{ $slider->title }}</h2>
                     <p class="white-text">{{ $slider->description }}</p>
                 </div>

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Slider;
+use App\Banner;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -15,7 +15,7 @@ class SliderController extends Controller
 {
     public function index()
     {
-        $sliders = Slider::latest()->get();
+        $sliders = Banner::latest()->get();
 
         return view('admin.sliders.index', compact('sliders'));
     }
@@ -28,7 +28,7 @@ class SliderController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title' => 'required|unique:sliders|max:255',
+            'title' => 'required|unique:banners|max:255',
             'image' => 'required|mimes:jpeg,jpg,png',
         ]);
 
@@ -44,16 +44,16 @@ class SliderController extends Controller
             }
             // $slider = Image::make($image)->resize(1600, 480)->save();
             Storage::disk('public')->put('slider/' . $imagename, \File::get($image));
-            if (config('app.env') == 'test') {
-                $full_path_source = $_SERVER['DOCUMENT_ROOT'].'/storage/app/public/slider/'. $imagename;
-                $full_path_dest = $_SERVER['DOCUMENT_ROOT'].'/public/storage/slider/' . $imagename;
-                File::copy($full_path_source, $full_path_dest);
-            }
+//            if (config('app.env') == 'test') {
+//                $full_path_source = $_SERVER['DOCUMENT_ROOT'].'/storage/app/public/slider/'. $imagename;
+//                $full_path_dest = $_SERVER['DOCUMENT_ROOT'].'/public/storage/slider/' . $imagename;
+//                File::copy($full_path_source, $full_path_dest);
+//            }
         } else {
             $imagename = 'default.png';
         }
 
-        $slider = new Slider();
+        $slider = new Banner();
         $slider->title = $request->title;
         $slider->description = $request->description;
         $slider->image = $imagename;
@@ -65,7 +65,7 @@ class SliderController extends Controller
 
     public function edit($id)
     {
-        $slider = Slider::find($id);
+        $slider = Banner::find($id);
 
         return view('admin.sliders.edit', compact('slider'));
     }
@@ -79,7 +79,7 @@ class SliderController extends Controller
 
         $image = $request->file('image');
         $slug = str_slug($request->title);
-        $slider = Slider::find($id);
+        $slider = Banner::find($id);
 
         if (isset($image)) {
             $currentDate = Carbon::now()->toDateString();
@@ -94,11 +94,11 @@ class SliderController extends Controller
             // Storage::disk('public')->put($imagename, $sliderimg);
             // $extension = $image->getClientOriginalExtension();
             Storage::disk('public')->put('slider/' . $imagename, \File::get($image));
-            if (config('app.env') == 'test') {
-                $full_path_source = $_SERVER['DOCUMENT_ROOT'].'/storage/app/public/slider/'. $imagename;
-                $full_path_dest = $_SERVER['DOCUMENT_ROOT'].'/public/storage/slider/' . $imagename;
-                File::copy($full_path_source, $full_path_dest);
-            }
+//            if (config('app.env') == 'test') {
+//                $full_path_source = $_SERVER['DOCUMENT_ROOT'].'/storage/app/public/slider/'. $imagename;
+//                $full_path_dest = $_SERVER['DOCUMENT_ROOT'].'/public/storage/slider/' . $imagename;
+//                File::copy($full_path_source, $full_path_dest);
+//            }
         } else {
             $imagename = $slider->image;
         }
@@ -114,7 +114,7 @@ class SliderController extends Controller
 
     public function destroy($id)
     {
-        $slider = Slider::find($id);
+        $slider = Banner::find($id);
 
         if (Storage::disk('public')->exists('slider/' . $slider->image)) {
             Storage::disk('public')->delete('slider/' . $slider->image);

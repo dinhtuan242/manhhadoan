@@ -40,7 +40,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['aut
     Route::resource('tags', 'TagController');
     Route::resource('categories', 'CategoryController');
     Route::resource('posts', 'PostController');
-    Route::resource('features', 'FeatureController');
+//    Route::resource('features', 'FeatureController');
     Route::resource('properties', 'PropertyController');
     Route::resource('user-manager', 'UserManagerController');
     Route::post('properties/gallery/delete', 'PropertyController@galleryImageDelete')->name('gallery-delete');
@@ -53,18 +53,18 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['aut
     Route::get('galleries/{id}/gallery', 'GalleryController@albumGallery')->name('album.gallery');
     Route::post('galleries', 'GalleryController@Gallerystore')->name('galleries.store');
 
-    Route::get('settings', 'DashboardController@settings')->name('settings');
-    Route::post('settings', 'DashboardController@settingStore')->name('settings.store');
+//    Route::get('settings', 'DashboardController@settings')->name('settings');
+//    Route::post('settings', 'DashboardController@settingStore')->name('settings.store');
 
     Route::get('profile', 'DashboardController@profile')->name('profile');
     Route::post('profile', 'DashboardController@profileUpdate')->name('profile.update');
 
-    Route::get('message', 'DashboardController@message')->name('message');
-    Route::get('message/read/{id}', 'DashboardController@messageRead')->name('message.read');
-    Route::get('message/replay/{id}', 'DashboardController@messageReplay')->name('message.replay');
-    Route::post('message/readunread', 'DashboardController@messageReadUnread')->name('message.readunread');
-    Route::delete('message/delete/{id}', 'DashboardController@messageDelete')->name('messages.destroy');
-    Route::post('message/mail', 'DashboardController@contactMail')->name('message.mail');
+//    Route::get('message', 'DashboardController@message')->name('message');
+//    Route::get('message/read/{id}', 'DashboardController@messageRead')->name('message.read');
+//    Route::get('message/replay/{id}', 'DashboardController@messageReplay')->name('message.replay');
+//    Route::post('message/readunread', 'DashboardController@messageReadUnread')->name('message.readunread');
+//    Route::delete('message/delete/{id}', 'DashboardController@messageDelete')->name('messages.destroy');
+//    Route::post('message/mail', 'DashboardController@contactMail')->name('message.mail');
 
     Route::get('changepassword', 'DashboardController@changePassword')->name('changepassword');
     Route::post('changepassword', 'DashboardController@changePasswordUpdate')->name('changepassword.update');
@@ -80,11 +80,11 @@ Route::group(['prefix' => 'agent', 'namespace' => 'Agent', 'middleware' => ['aut
     Route::resource('properties', 'PropertyController');
     Route::post('properties/gallery/delete', 'PropertyController@galleryImageDelete')->name('gallery-delete');
 
-    Route::get('message', 'DashboardController@message')->name('message');
-    Route::get('message/read/{id}', 'DashboardController@messageRead')->name('message.read');
-    Route::post('message/readunread', 'DashboardController@messageReadUnread')->name('message.readunread');
-    Route::delete('message/delete/{id}', 'DashboardController@messageDelete')->name('messages.destroy');
-    Route::post('message/mail', 'DashboardController@contactMail')->name('message.mail');
+//    Route::get('message', 'DashboardController@message')->name('message');
+//    Route::get('message/read/{id}', 'DashboardController@messageRead')->name('message.read');
+//    Route::post('message/readunread', 'DashboardController@messageReadUnread')->name('message.readunread');
+//    Route::delete('message/delete/{id}', 'DashboardController@messageDelete')->name('messages.destroy');
+//    Route::post('message/mail', 'DashboardController@contactMail')->name('message.mail');
 });
 
 Route::group(['prefix' => 'user', 'namespace' => 'User', 'middleware' => ['auth', 'user'], 'as' => 'user.'], function () {
@@ -94,10 +94,10 @@ Route::group(['prefix' => 'user', 'namespace' => 'User', 'middleware' => ['auth'
     Route::get('changepassword', 'DashboardController@changePassword')->name('changepassword');
     Route::post('changepassword', 'DashboardController@changePasswordUpdate')->name('changepassword.update');
 
-    Route::get('message', 'DashboardController@message')->name('message');
-    Route::get('message/read/{id}', 'DashboardController@messageRead')->name('message.read');
-    Route::get('message/replay/{id}', 'DashboardController@messageReplay')->name('message.replay');
-    Route::post('message/replay', 'DashboardController@messageSend')->name('message.send');
-    Route::post('message/readunread', 'DashboardController@messageReadUnread')->name('message.readunread');
-    Route::delete('message/delete/{id}', 'DashboardController@messageDelete')->name('messages.destroy');
+//    Route::get('message', 'DashboardController@message')->name('message');
+//    Route::get('message/read/{id}', 'DashboardController@messageRead')->name('message.read');
+//    Route::get('message/replay/{id}', 'DashboardController@messageReplay')->name('message.replay');
+//    Route::post('message/replay', 'DashboardController@messageSend')->name('message.send');
+//    Route::post('message/readunread', 'DashboardController@messageReadUnread')->name('message.readunread');
+//    Route::delete('message/delete/{id}', 'DashboardController@messageDelete')->name('messages.destroy');
 });

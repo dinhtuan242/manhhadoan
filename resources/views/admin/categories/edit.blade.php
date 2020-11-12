@@ -35,11 +35,11 @@
                             </div>
                         </div>
 
-                        @if(Storage::disk('public')->exists('category/thumb/'.$category->image))
-                            <div class="form-group">
-                                <img src="{{asset(Storage::url('category/thumb/'.$category->image))}}" alt="{{$category->name}}" class="img-responsive img-rounded">
-                            </div>
-                        @endif
+{{--                        @if(Storage::disk('public')->exists('category/thumb/'.$category->image))--}}
+{{--                            <div class="form-group">--}}
+{{--                                <img src="{{asset(Storage::url('category/thumb/'.$category->image))}}" alt="{{$category->name}}" class="img-responsive img-rounded">--}}
+{{--                            </div>--}}
+{{--                        @endif--}}
                         <div class="form-group">
                             <input type="file" name="image">
                         </div>

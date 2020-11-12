@@ -4,11 +4,12 @@
             <div class="nav-wrapper">
 
                 <a href="{{ route('home') }}" class="brand-logo">
-                    @if(isset($navbarsettings[0]) && $navbarsettings[0]['name'])
-                        {{ $navbarsettings[0]['name'] }}
-                    @else
-                        Hoàng Thế Hà
-                    @endif
+                    <?php if(isset($navbarsettings)): ?>
+                        <?php echo e($navbarsettings); ?>
+
+                    <?php else: ?>
+                    Hoàng Thế Hà
+                    <?php endif; ?>
                     <i class="material-icons left">location_city</i>
                 </a>
                 <a href="#" data-target="mobile-demo" class="sidenav-trigger">

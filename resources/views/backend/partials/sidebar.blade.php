@@ -24,12 +24,12 @@
                         <span>Quản lý tài sản</span>
                     </a>
                 </li>
-                <li class="{{ Request::is('admin/features*') ? 'active' : '' }}">
-                    <a href="{{ route('admin.features.index') }}">
-                        <i class="material-icons">star</i>
-                        <span>Quản lý tính năng đặc biệt</span>
-                    </a>
-                </li>
+{{--                <li class="{{ Request::is('admin/features*') ? 'active' : '' }}">--}}
+{{--                    <a href="{{ route('admin.features.index') }}">--}}
+{{--                        <i class="material-icons">star</i>--}}
+{{--                        <span>Quản lý tính năng đặc biệt</span>--}}
+{{--                    </a>--}}
+{{--                </li>--}}
 
                 <li class="{{ Request::is('admin/testimonials*') ? 'active' : '' }}">
                     <a href="{{ route('admin.testimonials.index') }}">
@@ -65,13 +65,13 @@
                     </a>
                 </li>
 
-                <li class="header"> Khác</li>
-                <li class="{{ Request::is('admin/message*') ? 'active' : '' }}">
-                    <a href="{{ route('admin.message') }}">
-                        <i class="material-icons">message</i>
-                        <span>Lịch hẹn</span>
-                    </a>
-                </li>
+{{--                <li class="header"> Khác</li>--}}
+{{--                <li class="{{ Request::is('admin/message*') ? 'active' : '' }}">--}}
+{{--                    <a href="{{ route('admin.message') }}">--}}
+{{--                        <i class="material-icons">message</i>--}}
+{{--                        <span>Lịch hẹn</span>--}}
+{{--                    </a>--}}
+{{--                </li>--}}
  
                 {{-- <li class="{{ Request::is('admin/settings*') ? 'active' : '' }}">
                     <a href="javascript:void(0);" class="menu-toggle">

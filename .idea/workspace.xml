@@ -145,7 +145,7 @@
       <workItem from="1603729613516" duration="1653000" />
       <workItem from="1603998161006" duration="191000" />
       <workItem from="1605152723834" duration="105000" />
-      <workItem from="1605162742536" duration="1141000" />
+      <workItem from="1605162742536" duration="5575000" />
     </task>
     <servers />
   </component>
@@ -153,13 +153,22 @@
     <option name="version" value="3" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="0" y="0" width="585" height="738" key="find.popup" timestamp="1603730517172">
-      <screen x="0" y="0" width="1366" height="738" />
+    <state x="720" y="299" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1605164508992">
+      <screen x="62" y="0" width="1858" height="1080" />
+    </state>
+    <state x="720" y="299" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/62.0.1858.1080/-1858.0.1858.1080@62.0.1858.1080" timestamp="1605164508992" />
+    <state x="572" y="167" width="796" height="841" key="find.popup" timestamp="1605168332072">
+      <screen x="62" y="0" width="1858" height="1080" />
     </state>
     <state x="0" y="0" width="585" height="738" key="find.popup/0.0.1366.738@0.0.1366.738" timestamp="1603730517172" />
+    <state x="572" y="167" width="796" height="841" key="find.popup/62.0.1858.1080/-1858.0.1858.1080@62.0.1858.1080" timestamp="1605168332072" />
     <state x="339" y="165" key="run.anything.popup" timestamp="1603998250275">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="339" y="165" key="run.anything.popup/0.0.1366.738@0.0.1366.738" timestamp="1603998250275" />
+    <state x="654" y="235" width="672" height="678" key="search.everywhere.popup" timestamp="1605166290921">
+      <screen x="62" y="0" width="1858" height="1080" />
+    </state>
+    <state x="654" y="235" width="672" height="678" key="search.everywhere.popup/62.0.1858.1080/-1858.0.1858.1080@62.0.1858.1080" timestamp="1605166290921" />
   </component>
 </project>

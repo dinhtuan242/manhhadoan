@@ -19,7 +19,7 @@ class PostController extends Controller
 
     public function index()
     {
-        $posts = Post::latest()->withCount('comments')->get();
+        $posts = Post::latest()->get();
 
         return view('admin.posts.index', compact('posts'));
     }
@@ -54,11 +54,11 @@ class PostController extends Controller
             // $postimage = Image::make($image)->resize(1600, 980)->save();
             // Storage::disk('public')->put('posts/' . $imagename, $postimage);
             Storage::disk('public')->put('posts/' . $imagename, \File::get($image));
-            if (config('app.env') == 'test') {
-                $full_path_source = $_SERVER['DOCUMENT_ROOT'].'/storage/app/public/posts/'. $imagename;
-                $full_path_dest = $_SERVER['DOCUMENT_ROOT'].'/public/storage/posts/' . $imagename;
-                File::copy($full_path_source, $full_path_dest);
-            }
+//            if (config('app.env') == 'test') {
+//                $full_path_source = $_SERVER['DOCUMENT_ROOT'].'/storage/app/public/posts/'. $imagename;
+//                $full_path_dest = $_SERVER['DOCUMENT_ROOT'].'/public/storage/posts/' . $imagename;
+//                File::copy($full_path_source, $full_path_dest);
+//            }
         } else {
             $imagename = 'default.png';
         }
@@ -78,7 +78,7 @@ class PostController extends Controller
         $post->categories()->attach($request->categories);
         $post->tags()->attach($request->tags);
 
-        Toastr::success('message', 'Post created successfully.');
+        Toastr::success('Thông báo', 'Thêm mới bài viết thành công');
         return redirect()->route('admin.posts.index');
     }
 
@@ -121,11 +121,11 @@ class PostController extends Controller
             // $postimage = Image::make($image)->resize(1600, 980)->save();
             // Storage::disk('public')->put('posts/' . $imagename, $postimage);
             Storage::disk('public')->put('posts/' . $imagename, \File::get($image));
-            if (config('app.env') == 'test') {
-                $full_path_source = $_SERVER['DOCUMENT_ROOT'].'/storage/app/public/posts/'. $imagename;
-                $full_path_dest = $_SERVER['DOCUMENT_ROOT'].'/public/storage/posts/' . $imagename;
-                File::copy($full_path_source, $full_path_dest);
-            }
+//            if (config('app.env') == 'test') {
+//                $full_path_source = $_SERVER['DOCUMENT_ROOT'].'/storage/app/public/posts/'. $imagename;
+//                $full_path_dest = $_SERVER['DOCUMENT_ROOT'].'/public/storage/posts/' . $imagename;
+//                File::copy($full_path_source, $full_path_dest);
+//            }
         } else {
             $imagename = $post->image;
         }
@@ -146,7 +146,7 @@ class PostController extends Controller
         $post->categories()->sync($request->categories);
         $post->tags()->sync($request->tags);
 
-        Toastr::success('message', 'Post updated successfully.');
+        Toastr::success('Thông báo', 'Cập nhật bài viết thành công');
         return redirect()->route('admin.posts.index');
     }
 
@@ -161,9 +161,8 @@ class PostController extends Controller
         $post->delete();
         $post->categories()->detach();
         $post->tags()->detach();
-        $post->comments()->delete();
 
-        Toastr::success('message', 'Post deleted successfully.');
+        Toastr::success('Thông báo', 'Xoá bài viết thành công');
         return back();
     }
 }

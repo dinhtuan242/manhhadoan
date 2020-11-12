@@ -23,10 +23,7 @@ class DashboardController extends Controller
         $properties = Property::latest()->where('agent_id', Auth::id())->take(5)->get();
         $propertytotal = Property::latest()->where('agent_id', Auth::id())->count();
 
-        $messages = Message::latest()->where('agent_id', Auth::id())->take(5)->get();
-        $messagetotal = Message::latest()->where('agent_id', Auth::id())->count();
-
-        return view('agent.dashboard', compact('properties', 'propertytotal', 'messages', 'messagetotal'));
+        return view('agent.dashboard', compact('properties', 'propertytotal'));
     }
 
     public function profile()

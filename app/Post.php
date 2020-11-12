@@ -26,11 +26,6 @@ class Post extends Model
         return $this->belongsToMany(Tag::class)->withTimestamps();
     }
 
-    public function comments()
-    {
-        return $this->morphMany('App\Comment', 'commentable');
-    }
-
     public static function archives()
     {
         return static::selectRaw('year(created_at) year, monthname(created_at) month, count(*) published')

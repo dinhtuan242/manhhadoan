@@ -158,17 +158,17 @@
                         </div>
                     </div>
 
-                    <h5>Tinh nang khac</h5>
-                    <div class="form-group demo-checkbox">
-                        @foreach($features as $feature)
-                            <input type="checkbox" id="features-{{$feature->id}}" name="features[]" class="filled-in chk-col-teal" value="{{$feature->id}}" 
-                            @foreach($property->features as $checked)
-                                {{ ($checked->id == $feature->id) ? 'checked' : '' }}
-                            @endforeach
-                            />
-                            <label for="features-{{$feature->id}}">{{$feature->name}}</label>
-                        @endforeach
-                    </div>
+{{--                    <h5>Tinh nang khac</h5>--}}
+{{--                    <div class="form-group demo-checkbox">--}}
+{{--                        @foreach($features as $feature)--}}
+{{--                            <input type="checkbox" id="features-{{$feature->id}}" name="features[]" class="filled-in chk-col-teal" value="{{$feature->id}}" --}}
+{{--                            @foreach($property->features as $checked)--}}
+{{--                                {{ ($checked->id == $feature->id) ? 'checked' : '' }}--}}
+{{--                            @endforeach--}}
+{{--                            />--}}
+{{--                            <label for="features-{{$feature->id}}">{{$feature->name}}</label>--}}
+{{--                        @endforeach--}}
+{{--                    </div>--}}
 
                     <div class="clearfix">
                         <h5>Google Map</h5>
