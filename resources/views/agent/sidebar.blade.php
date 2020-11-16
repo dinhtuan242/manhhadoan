@@ -35,10 +35,4 @@
             <span>Tạo mới tài sản<span>
         </li>
     </a>
-    <a href="{{ route('agent.profile') }}">
-        <li class="collection-item {{ Request::is('profile') ? 'active' : '' }}">
-            <i class="material-icons left">account_circle</i>
-            <span>Thông tin cá nhân<span>
-        </li>
-    </a>
 </ul>

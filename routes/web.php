@@ -71,10 +71,10 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['aut
 });
 
 Route::group(['prefix' => 'agent', 'namespace' => 'Agent', 'middleware' => ['auth', 'agent'], 'as' => 'agent.'], function () {
+
     Route::get('dashboard', 'DashboardController@index')->name('dashboard');
     Route::get('profile', 'DashboardController@profile')->name('profile');
-    Route::get('profile-update', 'DashboardController@viewUpdateProfile')->name('profile.view-update');
-    Route::post('profile-update', 'DashboardController@profileUpdate')->name('profile.update');
+    Route::post('profile', 'DashboardController@profileUpdate')->name('profile.update');
     Route::get('changepassword', 'DashboardController@changePassword')->name('changepassword');
     Route::post('changepassword', 'DashboardController@changePasswordUpdate')->name('changepassword.update');
     Route::resource('properties', 'PropertyController');
