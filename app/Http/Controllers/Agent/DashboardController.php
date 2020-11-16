@@ -35,6 +35,13 @@ class DashboardController extends Controller
 
         return view('agent.profile', compact('profile'));
     }
+
+    public function viewUpdateProfile()
+    {
+        $profile = Auth::user();
+
+        return view('agent.update-profile', compact('profile'));
+    }
     public function profileUpdate(Request $request)
     {
         $request->validate([
