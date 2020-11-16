@@ -2,7 +2,13 @@
 
     <li class="collection-header center">
         <div class="m-t-10">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/User_icon_2.svg/220px-User_icon_2.svg.png" alt="{{ auth()->user()->name }}" class="circle responsive-img">
+            <div class="m-t-10">
+                @if(auth()->user()->image)
+                    <img src="{{asset(Storage::url('users/'.auth()->user()->image))}}" alt="{{ auth()->user()->name }}" class="circle responsive-img">
+                @else
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/User_icon_2.svg/220px-User_icon_2.svg.png" alt="{{ auth()->user()->name }}" class="circle responsive-img">
+                @endif
+            </div>
         </div>
         <h5 class="truncate">
             {{ auth()->user()->name }}
@@ -33,6 +39,12 @@
         <li class="collection-item {{ Request::is('agent/properties/create') ? 'active' : '' }}">
             <i class="material-icons left">create</i>
             <span>Tạo mới tài sản<span>
+        </li>
+    </a>
+    <a href="{{ route('agent.profile') }}">
+        <li class="collection-item {{ Request::is('profile') ? 'active' : '' }}">
+            <i class="material-icons left">account_circle</i>
+            <span>Thông tin cá nhân<span>
         </li>
     </a>
 </ul>

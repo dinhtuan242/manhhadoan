@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Agent;
 
-use App\Feature;
 use App\Http\Controllers\Controller;
 use App\Property;
 use App\PropertyImageGallery;
@@ -33,7 +32,7 @@ class PropertyController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title' => 'required|unique:properties|max:255',
+            'title' => 'required|max:255',
             'price' => 'required',
             'purpose' => 'required',
             'type' => 'required',
@@ -50,7 +49,7 @@ class PropertyController extends Controller
         ]);
 
         $image = $request->file('image');
-        $slug = str_slug($request->title);
+        $slug = str_slug($request->title) . str_random(12);
 
         if (isset($image)) {
             $currentDate = Carbon::now()->toDateString();
@@ -62,11 +61,11 @@ class PropertyController extends Controller
             // $propertyimage = Image::make($image)->save();
             // Storage::disk('public')->put('property/' . $imagename, $propertyimage);
             Storage::disk('public')->put('property/' . $imagename, \File::get($image));
-            if (config('app.env') == 'test') {
-                $full_path_source = $_SERVER['DOCUMENT_ROOT'].'/storage/app/public/property/'. $imagename;
-                $full_path_dest = $_SERVER['DOCUMENT_ROOT'].'/public/storage/property/' . $imagename;
-                File::copy($full_path_source, $full_path_dest);
-            }
+//            if (config('app.env') == 'test') {
+//                $full_path_source = $_SERVER['DOCUMENT_ROOT'].'/storage/app/public/property/'. $imagename;
+//                $full_path_dest = $_SERVER['DOCUMENT_ROOT'].'/public/storage/property/' . $imagename;
+//                File::copy($full_path_source, $full_path_dest);
+//            }
         }
 
         $floor_plan = $request->file('floor_plan');
@@ -80,11 +79,11 @@ class PropertyController extends Controller
             // $propertyfloorplan = Image::make($floor_plan)->save();
             // Storage::disk('public')->put('property/' . $imagefloorplan, $propertyfloorplan);
             Storage::disk('public')->put('property/' . $imagefloorplan, \File::get($floor_plan));
-            if (config('app.env') == 'test') {
-                $full_path_source = $_SERVER['DOCUMENT_ROOT'].'/storage/app/public/property/'. $imagefloorplan;
-                $full_path_dest = $_SERVER['DOCUMENT_ROOT'].'/public/storage/property/' . $imagefloorplan;
-                File::copy($full_path_source, $full_path_dest);
-            }
+//            if (config('app.env') == 'test') {
+//                $full_path_source = $_SERVER['DOCUMENT_ROOT'].'/storage/app/public/property/'. $imagefloorplan;
+//                $full_path_dest = $_SERVER['DOCUMENT_ROOT'].'/public/storage/property/' . $imagefloorplan;
+//                File::copy($full_path_source, $full_path_dest);
+//            }
         } else {
             $imagefloorplan = 'default.png';
         }
@@ -102,10 +101,6 @@ class PropertyController extends Controller
         $property->city_slug = str_slug($request->city);
         $property->address = $request->address;
         $property->area = $request->area;
-
-        if (isset($request->featured)) {
-            $property->featured = true;
-        }
         $property->agent_id = Auth::id();
         $property->video = $request->video;
         $property->floor_plan = $imagefloorplan;
@@ -114,8 +109,6 @@ class PropertyController extends Controller
         $property->location_longitude = $request->location_longitude;
         $property->nearby = $request->nearby;
         $property->save();
-
-        $property->features()->attach($request->features);
 
         $gallary = $request->file('gallaryimage');
 
@@ -129,13 +122,13 @@ class PropertyController extends Controller
                 if (!Storage::disk('public')->exists('property/gallery')) {
                     Storage::disk('public')->makeDirectory('property/gallery');
                 }
-                $propertyimage = Image::make($images)->save();
-                Storage::disk('public')->put('property/gallery/' . $galimage['name'], $propertyimage);
-                if (config('app.env') == 'test') {
-                    $full_path_source = $_SERVER['DOCUMENT_ROOT'].'/storage/app/public/property/gallery/'. $galimage['name'];
-                    $full_path_dest = $_SERVER['DOCUMENT_ROOT'].'/public/storage/property/gallery/' . $galimage['name'];
-                    File::copy($full_path_source, $full_path_dest);
-                }
+//                $propertyimage = Image::make($images)->save();
+                Storage::disk('public')->put('property/gallery/' . $galimage['name'], \File::get($images));
+//                if (config('app.env') == 'test') {
+//                    $full_path_source = $_SERVER['DOCUMENT_ROOT'].'/storage/app/public/property/gallery/'. $galimage['name'];
+//                    $full_path_dest = $_SERVER['DOCUMENT_ROOT'].'/public/storage/property/gallery/' . $galimage['name'];
+//                    File::copy($full_path_source, $full_path_dest);
+//                }
                 $property->gallery()->create($galimage);
             }
         }
@@ -185,13 +178,13 @@ class PropertyController extends Controller
             if (Storage::disk('public')->exists('property/' . $property->image)) {
                 Storage::disk('public')->delete('property/' . $property->image);
             }
-            $propertyimage = Image::make($image)->save();
-            Storage::disk('public')->put('property/' . $imagename, $propertyimage);
-            if (config('app.env') == 'test') {
-                $full_path_source = $_SERVER['DOCUMENT_ROOT'].'/storage/app/public/property/'. $imagename;
-                $full_path_dest = $_SERVER['DOCUMENT_ROOT'].'/public/storage/property/' . $imagename;
-                File::copy($full_path_source, $full_path_dest);
-            }
+//            $propertyimage = Image::make($image)->save();
+            Storage::disk('public')->put('property/' . $imagename, \File::get($image));
+//            if (config('app.env') == 'test') {
+//                $full_path_source = $_SERVER['DOCUMENT_ROOT'].'/storage/app/public/property/'. $imagename;
+//                $full_path_dest = $_SERVER['DOCUMENT_ROOT'].'/public/storage/property/' . $imagename;
+//                File::copy($full_path_source, $full_path_dest);
+//            }
         } else {
             $imagename = $property->image;
         }
@@ -208,11 +201,11 @@ class PropertyController extends Controller
                 Storage::disk('public')->delete('property/' . $property->floor_plan);
             }
 
-            $propertyfloorplan = Image::make($floor_plan)->save();
-            Storage::disk('public')->put('property/' . $imagefloorplan, $propertyfloorplan);
-            $full_path_source = $_SERVER['DOCUMENT_ROOT'].'/storage/app/public/property/'. $imagefloorplan;
-            $full_path_dest = $_SERVER['DOCUMENT_ROOT'].'/public/storage/property/' . $imagefloorplan;
-            File::copy($full_path_source, $full_path_dest);
+//            $propertyfloorplan = Image::make($floor_plan)->save();
+            Storage::disk('public')->put('property/' . $imagefloorplan, \File::get($floor_plan));
+//            $full_path_source = $_SERVER['DOCUMENT_ROOT'].'/storage/app/public/property/'. $imagefloorplan;
+//            $full_path_dest = $_SERVER['DOCUMENT_ROOT'].'/public/storage/property/' . $imagefloorplan;
+//            File::copy($full_path_source, $full_path_dest);
         } else {
             $imagefloorplan = $property->floor_plan;
         }
@@ -244,8 +237,6 @@ class PropertyController extends Controller
         $property->nearby = $request->nearby;
         $property->save();
 
-        $property->features()->sync($request->features);
-
         $gallary = $request->file('gallaryimage');
         if ($gallary) {
             foreach ($gallary as $images) {
@@ -258,12 +249,12 @@ class PropertyController extends Controller
                     if (!Storage::disk('public')->exists('property/gallery')) {
                         Storage::disk('public')->makeDirectory('property/gallery');
                     }
-                    $propertyimage = Image::make($images)->save();
-                    Storage::disk('public')->put('property/gallery/' . $galimage['name'], $propertyimage);
+//                    $propertyimage = Image::make($images)->save();
+                    Storage::disk('public')->put('property/gallery/' . $galimage['name'], \File::get($images));
 
-                    $full_path_source = $_SERVER['DOCUMENT_ROOT'].'/storage/app/public/property/gallery/'. $galimage['name'];
-                    $full_path_dest = $_SERVER['DOCUMENT_ROOT'].'/public/storage/property/gallery/' . $galimage['name'];
-                    File::copy($full_path_source, $full_path_dest);
+//                    $full_path_source = $_SERVER['DOCUMENT_ROOT'].'/storage/app/public/property/gallery/'. $galimage['name'];
+//                    $full_path_dest = $_SERVER['DOCUMENT_ROOT'].'/public/storage/property/gallery/' . $galimage['name'];
+//                    File::copy($full_path_source, $full_path_dest);
                     $property->gallery()->create($galimage);
                 }
             }
@@ -284,8 +275,6 @@ class PropertyController extends Controller
             Storage::disk('public')->delete('property/' . $property->floor_plan);
         }
 
-        $property->delete();
-
         $galleries = $property->gallery;
         if ($galleries) {
             foreach ($galleries as $key => $gallery) {
@@ -295,8 +284,7 @@ class PropertyController extends Controller
                 PropertyImageGallery::destroy($gallery->id);
             }
         }
-
-        $property->features()->detach();
+        $property->delete();
 
         Toastr::success('message', 'Property deleted successfully.');
         return back();

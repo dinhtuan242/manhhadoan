@@ -32,6 +32,13 @@ class DashboardController extends Controller
 
         return view('agent.profile', compact('profile'));
     }
+
+    public function viewUpdateProfile()
+    {
+        $profile = Auth::user();
+
+        return view('agent.update-profile', compact('profile'));
+    }
     public function profileUpdate(Request $request)
     {
         $request->validate([
@@ -40,6 +47,8 @@ class DashboardController extends Controller
             'email' => 'required|email',
             'image' => 'image|mimes:jpeg,jpg,png',
             'about' => 'max:250',
+            'phone' => 'max:250',
+            'address' => 'max:250',
         ]);
 
         $user = User::find(Auth::id());
@@ -64,13 +73,24 @@ class DashboardController extends Controller
 
         $user->name = $request->name;
         $user->username = $request->username;
-        $user->email = $request->email;
-        $user->image = $imagename;
-        $user->about = $request->about;
-
+        if ($user->email) {
+            $user->email = $request->email;
+        }
+        if (isset($imagename)) {
+            $user->image = $imagename;
+        }
+        if ($user->about) {
+            $user->about = $request->about;
+        }
+        if ($user->phone) {
+            $user->phone = $request->phone;
+        }
+        if ($user->address) {
+            $user->address = $request->address;
+        }
         $user->save();
 
-        return back();
+        return redirect()->route('agent.profile');
     }
 
     public function changePassword()

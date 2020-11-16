@@ -18,14 +18,14 @@
                 <div class="col s12 m9">
 
                     <h4 class="agent-title">DASHBOARD</h4>
-                    
+
                     <div class="agent-content">
 
                         <div class="row">
-                            <div class="col s6">
+                            <div class="col s12">
                                 <div class="box teal white-text p-30">
                                     <i class="material-icons left">location_city</i>
-                                    <span class="truncate uppercase bold font-18">Tài sản</span>
+                                    <span class="truncate uppercase bold font-18">Tổng tài sản</span>
                                     <h4 class="m-t-10 m-b-0">{{ $propertytotal }}</h4>
                                 </div>
                             </div>
@@ -39,7 +39,7 @@
                         </div>
 
                         <div class="row">
-                            <div class="col s6">
+                            <div class="col s12">
                                 <div class="box teal white-text p-20">
                                     <i class="material-icons left font-18">location_city</i>
                                     <span class="truncate uppercase bold">Tài sản mới</span>
@@ -55,7 +55,7 @@
                                     @endforeach
                                 </div>
                             </div>
-                        
+
                             <div class="col s6">
 {{--                                <div class="box teal white-text p-20">--}}
 {{--                                    <i class="material-icons left font-18">mail</i>--}}
@@ -75,7 +75,7 @@
                         </div>
 
                     </div>
-        
+
                 </div>
 
             </div>

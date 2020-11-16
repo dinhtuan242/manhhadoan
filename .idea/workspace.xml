@@ -1,7 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="bddf3580-b613-46a1-b20a-c2c1a70754be" name="Default Changelist" comment="" />
+    <list default="true" id="bddf3580-b613-46a1-b20a-c2c1a70754be" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/PropertyController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/PropertyController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/UserManagerController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/UserManagerController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Agent/PropertyController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Agent/PropertyController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PagesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PagesController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/properties/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/properties/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/properties/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/properties/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/agent/dashboard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/agent/dashboard.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pages/properties/single.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/properties/single.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -18,8 +47,34 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="GitToolBoxStore">
     <option name="projectConfigVersion" value="2" />
+    <option name="recentBranches">
+      <RecentBranches>
+        <option name="branchesForRepo">
+          <list>
+            <RecentBranchesForRepo>
+              <option name="branches">
+                <list>
+                  <RecentBranch>
+                    <option name="branchName" value="fix-db-and-model" />
+                    <option name="lastUsedInstant" value="1605493638" />
+                  </RecentBranch>
+                  <RecentBranch>
+                    <option name="branchName" value="master" />
+                    <option name="lastUsedInstant" value="1605493637" />
+                  </RecentBranch>
+                </list>
+              </option>
+              <option name="repositoryRootUrl" value="file://$PROJECT_DIR$" />
+            </RecentBranchesForRepo>
+          </list>
+        </option>
+      </RecentBranches>
+    </option>
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
@@ -113,6 +168,9 @@
     </include_path>
   </component>
   <component name="ProjectId" id="1il6EYShstzBtJS6DoevTVDnrBb" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -145,30 +203,57 @@
       <workItem from="1603729613516" duration="1653000" />
       <workItem from="1603998161006" duration="191000" />
       <workItem from="1605152723834" duration="105000" />
-      <workItem from="1605162742536" duration="5575000" />
+      <workItem from="1605162742536" duration="8879000" />
+      <workItem from="1605228409025" duration="7081000" />
+      <workItem from="1605487727486" duration="2967000" />
+      <workItem from="1606095198061" duration="5402000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
   <component name="WindowStateProjectService">
     <state x="720" y="299" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1605164508992">
       <screen x="62" y="0" width="1858" height="1080" />
     </state>
     <state x="720" y="299" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/62.0.1858.1080/-1858.0.1858.1080@62.0.1858.1080" timestamp="1605164508992" />
-    <state x="572" y="167" width="796" height="841" key="find.popup" timestamp="1605168332072">
+    <state x="771" y="295" key="FileChooserDialogImpl" timestamp="1605500664080">
+      <screen x="62" y="0" width="1858" height="1080" />
+    </state>
+    <state x="771" y="295" key="FileChooserDialogImpl/62.0.1858.1080/-1858.0.1858.1080@62.0.1858.1080" timestamp="1605500664080" />
+    <state x="-1388" y="0" width="1378" height="746" maximized="true" key="dock-window-1" timestamp="1605495675885">
+      <screen x="-1858" y="0" width="1858" height="1080" />
+    </state>
+    <state x="-1388" y="0" width="1378" height="746" maximized="true" key="dock-window-1/62.0.1858.1080/-1858.0.1858.1080@62.0.1858.1080" timestamp="1605495675885" />
+    <state x="-1682" y="0" width="1378" height="746" maximized="true" key="dock-window-2" timestamp="1605495675885">
+      <screen x="-1858" y="0" width="1858" height="1080" />
+    </state>
+    <state x="-1682" y="0" width="1378" height="746" maximized="true" key="dock-window-2/62.0.1858.1080/-1858.0.1858.1080@62.0.1858.1080" timestamp="1605495675885" />
+    <state x="572" y="167" width="796" height="841" key="find.popup" timestamp="1606100617350">
       <screen x="62" y="0" width="1858" height="1080" />
     </state>
     <state x="0" y="0" width="585" height="738" key="find.popup/0.0.1366.738@0.0.1366.738" timestamp="1603730517172" />
-    <state x="572" y="167" width="796" height="841" key="find.popup/62.0.1858.1080/-1858.0.1858.1080@62.0.1858.1080" timestamp="1605168332072" />
+    <state x="572" y="167" width="796" height="841" key="find.popup/62.0.1858.1080/-1858.0.1858.1080@62.0.1858.1080" timestamp="1606100617350" />
     <state x="339" y="165" key="run.anything.popup" timestamp="1603998250275">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="339" y="165" key="run.anything.popup/0.0.1366.738@0.0.1366.738" timestamp="1603998250275" />
-    <state x="654" y="235" width="672" height="678" key="search.everywhere.popup" timestamp="1605166290921">
+    <state x="654" y="235" width="672" height="678" key="search.everywhere.popup" timestamp="1605491065138">
       <screen x="62" y="0" width="1858" height="1080" />
     </state>
-    <state x="654" y="235" width="672" height="678" key="search.everywhere.popup/62.0.1858.1080/-1858.0.1858.1080@62.0.1858.1080" timestamp="1605166290921" />
+    <state x="654" y="235" width="672" height="678" key="search.everywhere.popup/62.0.1858.1080/-1858.0.1858.1080@62.0.1858.1080" timestamp="1605491065138" />
   </component>
 </project>

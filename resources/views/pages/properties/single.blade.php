@@ -65,7 +65,7 @@
                     </div>
 
                     <div>
-                        <a class="btn-floating btn-small" style="background-color: #fb483a !important" onclick="reportUser({{$property->user->id}})"><i class="material-icons">report</i></a>
+                        <a class="btn-floating btn-small" style="background-color: #fb483a !important" onclick="reportUser({{$property->id}})"><i class="material-icons">report</i></a>
                         <span class="btn btn-small disabled b-r-20">Phòng ngủ: {{ $property->bedroom}} </span>
                         <span class="btn btn-small disabled b-r-20">Phòng tắm: {{ $property->bathroom}} </span>
                         <span class="btn btn-small disabled b-r-20">Diện tích: {{ $property->area}} mét vuông</span>
@@ -73,7 +73,7 @@
                 </div>
                 <div class="col s12 m4">
                     <div>
-                        <h4 class="left">{{ $property->price }} triệu đồng</h4>
+                        <h4 class="left">{{ number_format($property->price) }} triệu đồng</h4>
                         <button type="button" class="btn btn-small m-t-25 right disabled b-r-20"> Tài sản {{ $property->purpose }}</button>
                     </div>
                 </div>
@@ -148,10 +148,7 @@
                             {!! $property->nearby !!}
                         </div>
                     </div>
-
-                    <div class="card-no-box-shadow card">
-                        <div class="single-narebay p-15">
-</div></div></div>
+                </div>
                 <div class="col s12 m4">
                     <div class="clearfix">
 
@@ -164,18 +161,20 @@
                                     @if($property->user)
                                         <div class="card horizontal card-no-shadow">
                                             <div class="card-image p-l-10 agent-image">
-                                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/User_icon_2.svg/48px-User_icon_2.svg.png" alt="{{ $property->user->username }}" class="imgresponsive">
+                                                @if(!asset(Storage::url('users/'.auth()->user()->image)))
+                                                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/User_icon_2.svg/48px-User_icon_2.svg.png" alt="{{ $property->user->username }}" class="imgresponsive">
+                                                @else
+                                                    <img src="{{asset(Storage::url('users/'.auth()->user()->image))}}" alt="{{ $property->user->username }}" class="imgresponsive">
+                                                @endif
                                             </div>
                                             <div class="card-stacked">
                                                 <div class="p-l-10 p-r-10">
                                                     <h5 class="m-t-b-0">{{ $property->user->name }}</h5>
-                                                    <strong>{{ $property->user->email }}</strong>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="p-l-10 p-r-10">
-                                            <p>{{ $property->user->about }}</p>
-                                            <a href="{{ route('agents.show',$property->agent_id) }}" class="profile-link">Thông tin</a>
+                                            <a href="{{ route('agents.show',$property->agent_id) }}" class="profile-link">Chi tiết</a>
                                         </div>
                                     @endif
                                 </li>
@@ -189,27 +188,17 @@
                                     @auth()
                                         <form class="agent-message-box" action="" method="POST">
                                             @csrf
-                                            <input type="hidden" name="agent_id" value="{{ $property->user->id }}">
-                                            <input type="hidden" name="user_id" value="{{ auth()->id() }}">
-                                            <input type="hidden" name="property_id" value="{{ $property->id }}">
-
                                             <div class="box">
-                                                <input type="text" name="name" placeholder="Họ tên" value={{ Auth::user()->name }}>
+                                                <input type="text" name="name" placeholder="Họ tên" disabled value="{{ $property->user->name }}" >
                                             </div>
                                             <div class="box">
-                                                <input type="email" name="email" placeholder="Email" value={{ Auth::user()->email }}>
+                                                <input type="email" name="email" placeholder="Email" disabled value="{{ $property->user->email }}" >
                                             </div>
                                             <div class="box">
-                                                <input type="number" name="phone" placeholder="Điện thoại">
+                                                <input type="number" name="phone" placeholder="Điện thoại" disabled value="{{ $property->user->phone }}">
                                             </div>
                                             <div class="box">
-                                                <textarea name="message" placeholder="Ghi chú"></textarea>
-                                            </div>
-                                            <div class="box">
-                                                <button id="msgsubmitbtn" class="btn waves-effect waves-light w100 teal" type="submit">
-                                                    Đặt lịch
-                                                    <i class="material-icons left">send</i>
-                                                </button>
+                                                <input type="text" name="address" placeholder="Địa chỉ" disabled value="{{ $property->user->address }}">
                                             </div>
                                         </form>
                                     @endauth
@@ -267,9 +256,6 @@
     </section>
 
     {{-- RATING --}}
-    @php
-        $rating = ($rating == null) ? 0 : $rating;
-    @endphp
 @endsection
 
 @section('scripts')
@@ -286,28 +272,49 @@
                 showCancelButton: true,
                 confirmButtonText: 'Báo cáo',
                 showLoaderOnConfirm: true,
+                timer: 5000,
                 preConfirm: (reason) => {
-                    return fetch(`{{ route('user-manager.report', $property->user->id) }}`)
-                    .then(response => {
-                        if (!response.ok) {
-                        throw new Error(response.statusText)
+                    {{--return fetch(`{{ route('user-manager.report', $property->user->id) }}`)--}}
+                    {{--.then(response => {--}}
+                    {{--    if (!response.ok) {--}}
+                    {{--    throw new Error(response.statusText)--}}
+                    {{--    }--}}
+                    {{--    return response.json()--}}
+                    {{--})--}}
+                    {{--.catch(error => {--}}
+                    {{--    Swal.showValidationMessage(--}}
+                    {{--    `Báo cáo thất bại: ${error}`--}}
+                    {{--    )--}}
+                    {{--})--}}
+
+                    return new Promise(function(resolve, reject) {
+                    // Make jQuery Ajax-request
+                    $.ajax({
+                        data       : 'reason=' + reason,
+                        cache      : false,
+                        processData: false,
+                        dataType   : 'json',
+                        method     : 'POST',
+                        url        : `{{ route('user-manager.report', $property->user->id) }}`,
+                        success: function(response) {
+                            // Set content for success-sweetalert
+                            resolve();
+                        },
+                        error: function(response) {
+                            // Set content for failure-sweetalert
+                            reject('Báo cáo thất bại');
                         }
-                        return response.json()
-                    })
-                    .catch(error => {
-                        Swal.showValidationMessage(
-                        `Báo cáo thất bại: ${error}`
-                        )
-                    })
+                    });
+                    });
                 },
-                allowOutsideClick: () => !Swal.isLoading()
+                    allowOutsideClick: () => !Swal.isLoading()
                 }).then((result) => {
                 if (result.value) {
                     Swal.fire({
-                    title: `Báo cáo người dùng này thành công!`,
+                    title: `Báo cáo bài viết này thành công!`,
                     })
                 }
-            })
+                }).catch(swal.noop());
         }
         $(function(){
 
@@ -315,46 +322,6 @@
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
-            });
-
-            // RATING
-            $("#rateYo").rateYo({
-                rating: <?php echo json_encode($rating); ?>,
-                halfStar: true,
-                starWidth: "26px"
-            })
-            .on("rateyo.set", function (e, data) {
-
-                var rating = data.rating;
-                var property_id = <?php echo json_encode($property->id); ?>;
-                var user_id = <?php echo json_encode( auth()->id() ); ?>;
-                
-                $.post( "{{ route('property.rating') }}", { rating: rating, property_id: property_id, user_id: user_id }, function( data ) {
-                    if(data.rating.rating){
-                        M.toast({html: 'Đánh giá: '+ data.rating.rating + ' sao thành công.', classes:'green darken-4'})
-                    }
-                });
-            });
-            
-
-            // COMMENT
-            $(document).on('click','#commentreplay',function(e){
-                e.preventDefault();
-                
-                var commentid = $(this).data('commentid');
-
-                $('#procomment-'+commentid).empty().append(
-                    `<div class="comment-box">
-                        <form action="{{ route('property.comment',$property->id) }}" method="POST">
-                            @csrf
-                            <input type="hidden" name="parent" value="1">
-                            <input type="hidden" name="parent_id" value="`+commentid+`">
-                            
-                            <textarea name="body" class="box" placeholder="Để lại bình luận""></textarea>
-                            <input type="submit" class="btn teal" value="Bình luận">
-                        </form>
-                    </div>`
-                );
             });
 
             // MESSAGE

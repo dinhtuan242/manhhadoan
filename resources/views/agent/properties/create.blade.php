@@ -66,15 +66,7 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="input-field col s3">
-                                    <p>
-                                        <label>
-                                            <input type="checkbox" name="featured" class="filled-in" checked="checked" />
-                                            <span>Tính năng đặc biệt</span>
-                                        </label>
-                                    </p>
-                                </div>
-                                <div class="input-field col s9">
+                                <div class="input-field col s12">
                                     <i class="material-icons prefix">mode_edit</i>
                                     <textarea id="description" name="description" class="materialize-textarea"></textarea>
                                     <label for="description">Mô tả</label>

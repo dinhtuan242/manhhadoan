@@ -144,12 +144,12 @@ class UserManagerController extends Controller
         if ($agent->status == 1) {
             $agent->status = 0;
             $agent->save();
-            Toastr::success('Thong bao', 'Khoa tai khoan thanh cong');
+            Toastr::success('Thông báo', 'Khoá tài khoản thành công');
             return redirect()->route('admin.user-manager.block');
         } else {
             $agent->status = 1;
             $agent->save();
-            Toastr::success('Thong bao', 'Mo khoa tai khoan thanh cong');
+            Toastr::success('Thông báo', 'Mở tài khoản thành công');
             return redirect()->route('admin.user-manager.block');
         }
     }
@@ -164,17 +164,18 @@ class UserManagerController extends Controller
     {
         $user = User::findOrFail($id);
         $user->delete();
-        Toastr::success('Thong bao', 'Xoa tai khoan thanh cong.');
+        Toastr::success('Thông báo', 'Xoá tài khoản thành công');
         return back();
     }
 
     public function report($id, Request $request)
     {
-        $agent = User::findOrFail($id);
-        $agent->reason = $request['reason'];
-        $agent->save();
+        $property = Property::findOrFail($id);
+        $property->reason = $request['reason'];
+        $property->isReport = 1;
+        $property->save();
         if ($request->ajax()) {
-            return response()->json(['Thong bao' => 'Bao cao nguoi dung thanh cong']);
+            return response()->json(['Thông báo' => 'Báo cáo bài viết thành công']);
         }
     }
 }

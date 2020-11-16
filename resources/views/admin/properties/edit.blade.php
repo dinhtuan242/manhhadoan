@@ -76,11 +76,6 @@
                         <div class="help-info">m2</div>
                     </div>
 
-                    <div class="form-group">
-                        <input type="checkbox" id="featured" name="featured" class="filled-in" value="1" {{ $property->featured ? 'checked' : '' }}/>
-                        <label for="featured">Tinh nang dac biet</label>
-                    </div>
-
                     <hr>
                     <div class="form-group">
                         <label for="tinymce">Mo ta</label>
@@ -251,7 +246,7 @@
         </div>
         </form>
     </div>
-    
+
 
 @endsection
 

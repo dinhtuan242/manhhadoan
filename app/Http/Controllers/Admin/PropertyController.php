@@ -249,9 +249,8 @@ class PropertyController extends Controller
         $property->location_latitude = $request->location_latitude;
         $property->location_longitude = $request->location_longitude;
         $property->nearby = $request->nearby;
+        $property->active = $request->active;
         $property->save();
-
-        $property->features()->sync($request->features);
 
         $gallary = $request->file('gallaryimage');
         if ($gallary) {

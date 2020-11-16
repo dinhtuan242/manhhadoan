@@ -28,7 +28,7 @@ Route::get('/blog/author/{username}', 'PagesController@blogAuthor')->name('blog.
 
 Route::get('/contact', 'PagesController@contact')->name('contact')->middleware('auth');
 Route::post('/contact', 'PagesController@messag.1eContact')->name('contact.message')->middleware('auth');
-Route::post('/user/report/{id}', 'UserManagerController@report')->name('user-manager.report');
+Route::post('/user/report/{id}', 'Admin\UserManagerController@report')->name('user-manager.report');
 
 Auth::routes();
 Route::get('admin/user-manager/block', 'Admin\UserManagerController@block')->name('admin.user-manager.block')->middleware(['auth', 'admin']);
@@ -71,10 +71,10 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['aut
 });
 
 Route::group(['prefix' => 'agent', 'namespace' => 'Agent', 'middleware' => ['auth', 'agent'], 'as' => 'agent.'], function () {
-
     Route::get('dashboard', 'DashboardController@index')->name('dashboard');
     Route::get('profile', 'DashboardController@profile')->name('profile');
-    Route::post('profile', 'DashboardController@profileUpdate')->name('profile.update');
+    Route::get('profile-update', 'DashboardController@viewUpdateProfile')->name('profile.view-update');
+    Route::post('profile-update', 'DashboardController@profileUpdate')->name('profile.update');
     Route::get('changepassword', 'DashboardController@changePassword')->name('changepassword');
     Route::post('changepassword', 'DashboardController@changePasswordUpdate')->name('changepassword.update');
     Route::resource('properties', 'PropertyController');

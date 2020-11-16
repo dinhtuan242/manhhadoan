@@ -35,6 +35,8 @@
                                     <th>Người đăng</th>
                                     <th>Loại tài sản</th>
                                     <th>Kiểu tài sản</th>
+                                    <th>Bị báo cáo</th>
+                                    <th>Lý do báo cáo</th>
                                     <th width="150">Hành động</th>
                                 </tr>
                             </thead>
@@ -56,6 +58,8 @@
                                     <td>{{$property->user->name}}</td>
                                     <td>{{$property->type == 'house' ? 'Nha' : 'Can ho'}}</td>
                                     <td>{{$property->purpose == 'sale' ? 'Ban' : 'Cho thue'}}</td>
+                                    <td>{{$property->isReport ? 'Có' : 'Không'}}</td>
+                                    <td>{{$property->reason}}</td>
 
                                     <td class="text-center">
                                         <a href="{{route('property.show',$property->slug)}}" target="_blank" class="btn btn-success btn-sm waves-effect">
@@ -103,7 +107,7 @@
 
     <script>
         function deletePost(id){
-            
+
             swal({
             title: 'Canh bao',
             text: "Ban co chac chan muon xoa tai san nay?",

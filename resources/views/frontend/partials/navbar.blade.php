@@ -35,7 +35,7 @@
                     @else
                         <li>
                             <a class="dropdown-trigger" href="javascript:;" data-target="dropdown-auth-frontend">
-                                {{ ucfirst(Auth::user()->username) }}
+                                {{ ucfirst(Auth::user()->name) }}
                                 <i class="material-icons right">arrow_drop_down</i>
                             </a>
                         </li>

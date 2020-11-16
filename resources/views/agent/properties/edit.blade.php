@@ -20,7 +20,7 @@
                     <div class="agent-content">
                         <h4 class="agent-title">Sửa tài sản</h4>
 
-                        <form action="{{route('agent.properties.update',$property->slug)}}" method="POST" enctype="multipart/form-data">
+                        <form action="{{route('agent.properties.update', $property->slug)}}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
                             <div class="row">
@@ -67,15 +67,7 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="input-field col s3">
-                                    <p>
-                                        <label>
-                                            <input type="checkbox" name="featured" class="filled-in" {{ $property->featured == 1 ? 'checked' : '' }} />
-                                            <span>Tính năng đặc biệt</span>
-                                        </label>
-                                    </p>
-                                </div>
-                                <div class="input-field col s9">
+                                <div class="input-field col s12">
                                     <i class="material-icons prefix">mode_edit</i>
                                     <textarea id="description" name="description" class="materialize-textarea">{{ $property->description }}</textarea>
                                     <label for="description">Mô tả</label>
@@ -194,7 +186,7 @@
                                 </div>
                                 <div class="file-field input-field col s2">
                                     @if(Storage::disk('public')->exists('property/'.$property->floor_plan) && $property->floor_plan )
-                                        <img src="{{asset(Storage::url('property/'.$property->floor_plan))}}" alt="{{$property->title}}" class="responsive-img">
+                                        <img src="{{ asset(Storage::url('property/'.$property->floor_plan))}}" alt="{{$property->title }}" class="responsive-img">
                                     @endif
                                 </div>
                             </div>
@@ -213,7 +205,7 @@
                                 <div class="col m3 s6">
                                     <div class="gallery-image-edit" id="gallery-{{$gallery->id}}">
                                         <button type="button" data-id="{{$gallery->id}}" class="btn btn-small red"><i class="material-icons">delete_forever</i></button>
-                                        <img class="responsive-img" src="{{Storage::url('property/gallery/'.$gallery->name)}}" alt="{{$gallery->name}}">
+                                        <img class="responsive-img" src="{{asset(Storage::url('property/gallery/'.$gallery->name))}}" alt="{{$gallery->name}}">
                                     </div>
                                 </div>
                                 @endforeach

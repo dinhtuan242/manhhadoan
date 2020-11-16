@@ -27,11 +27,9 @@ class PagesController extends Controller
 
     public function propertieshow($slug)
     {
-        $property = Property::with('features', 'gallery', 'user', 'comments')
+        $property = Property::with( 'gallery', 'user')
             ->where('slug', $slug)
             ->first();
-
-        $rating = Rating::where('property_id', $property->id)->where('type', 'property')->avg('rating');
 
         $relatedproperty = Property::latest()
             ->where('purpose', $property->purpose)
@@ -45,7 +43,7 @@ class PagesController extends Controller
 
         $cities = Property::select('city', 'city_slug')->distinct('city_slug')->get();
 
-        return view('pages.properties.single', compact('property', 'rating', 'relatedproperty', 'videoembed', 'cities'));
+        return view('pages.properties.single', compact('property', 'relatedproperty', 'videoembed', 'cities'));
     }
 
     // AGENT PAGE
@@ -120,7 +118,7 @@ class PagesController extends Controller
     // BLOG CATEGORIES
     public function blogCategories()
     {
-        $posts = Post::latest()->withCount(['comments', 'categories'])
+        $posts = Post::latest()->withCount(['categories'])
             ->whereHas('categories', function ($query) {
                 $query->where('categories.slug', '=', request('slug'));
             })
@@ -169,14 +167,14 @@ class PagesController extends Controller
 
         $agentInfo = User::where('id', $request['agent_id'])->first();
         $name = $agentInfo['name'];
-        $message = '<strong>Khách hàng:</strong> ' . $request['name'] 
-                    . ' muốn hẹn gặp bạn. <br/><strong>Số điện thoại:</strong> ' . $request['phone'] 
+        $message = '<strong>Khách hàng:</strong> ' . $request['name']
+                    . ' muốn hẹn gặp bạn. <br/><strong>Số điện thoại:</strong> ' . $request['phone']
                     . '. <br/><strong>Email:</strong> ' . $request['email']
                     . ' <br/><strong>Ghi chú:</strong>' . $request['message']
                     . ' <br/>Hãy chủ động liên hệ sớm nhé!';
         $mailfrom = config('mail.from.address');
-        
-        Mail::to($agentInfo->email)->send(new Contact($message, $name, $mailfrom));                                                                                                                                                                                                   
+
+        Mail::to($agentInfo->email)->send(new Contact($message, $name, $mailfrom));
         Message::create($request->all());
 
         if ($request->ajax()) {
